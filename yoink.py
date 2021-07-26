@@ -63,7 +63,6 @@ for site in sites:
     seriouseats.main(fullPath)
     publixaprons.main(fullPath)
     food52.main(fullPath)
-    bonappetit.main(fullPath)
     epicurious.main(fullPath)
     skinnytaste.main(fullPath)
     finecooking.main(fullPath)
@@ -71,5 +70,6 @@ for site in sites:
     atk.main(fullPath)
     sbs.main(fullPath)
     vegrecipesofindia.main(fullPath)
+    bonappetit.main(fullPath)
 
 
