@@ -37,6 +37,10 @@ from sites.maangchi import maangchi
 from sites.nytcooking import nytcooking
 from sites.altonbrown import altonbrown
 from sites.kaf import kaf
+from sites.woksOfLife import woksOfLife
+from sites.cookingTree import cookingTree
+
+import random
 
 '''
 Sites to scrape
@@ -51,25 +55,40 @@ for site in sites:
     # each sites module to find their cache files
     fullPath = pathlib.Path('recipes.txt').parent.resolve()
 
-    #kaf.main(fullPath)
-    altonbrown.main(fullPath)
-    nytcooking.main(fullPath)
-    maangchi.main(fullPath)
-    justonecookbook.main(fullPath)
+    #altonbrown.main(fullPath)
+    #justonecookbook.main(fullPath)
     veganricha.main(fullPath)
-    budgetbytes.main(fullPath)
-    hotthaikitchen.main(fullPath)
-    simplyrecipes.main(fullPath)
-    seriouseats.main(fullPath)
-    publixaprons.main(fullPath)
-    food52.main(fullPath)
-    epicurious.main(fullPath)
-    skinnytaste.main(fullPath)
-    finecooking.main(fullPath)
-    manjulaskitchen.main(fullPath)
-    atk.main(fullPath)
-    sbs.main(fullPath)
-    vegrecipesofindia.main(fullPath)
-    bonappetit.main(fullPath)
+    #budgetbytes.main(fullPath)
+    #hotthaikitchen.main(fullPath)
+    #simplyrecipes.main(fullPath)
+    #seriouseats.main(fullPath)
+    #food52.main(fullPath)
+    #epicurious.main(fullPath)
+    #skinnytaste.main(fullPath)
+    #finecooking.main(fullPath)     # does not stop
+    #manjulaskitchen.main(fullPath)
+    #sbs.main(fullPath)
+    #vegrecipesofindia.main(fullPath)
+    #publixaprons.main(fullPath)     # needs a way to gracfully fail when loadmore isnt there
+    #bonappetit.main(fullPath)
+    #woksOfLife.main(fullPath)
+    #cookingTree.main(fullPath)
+
+    '''
+    lines_seen = set() # holds lines already seen
+    outfile = open('./recipes_no_dupes.txt', "w")
+    for line in open('./recipes.txt', "r"):
+        if line not in lines_seen: # not a duplicate
+            outfile.write(line)
+            lines_seen.add(line)
+    outfile.close()
+    '''
+    with open('./recipes.txt','r') as source:
+        data = [ (random.random(), line) for line in source ]
+    data.sort()
+    with open('./recipes_random.txt','w') as target:
+        for _, line in data:
+            target.write( line )
+
 
 
